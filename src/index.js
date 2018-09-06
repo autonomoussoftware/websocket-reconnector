@@ -1,5 +1,7 @@
 'use strict'
 
+const debug = require('debug')('websocket-reconnector')
+
 function WsReconnector (Ws, options) {
   function ReconnectingWebsocket (...args) {
     const readOnlyProperties = [
@@ -76,11 +78,15 @@ function WsReconnector (Ws, options) {
       return
     }
 
+    debug('Connecting')
+
     this._connecting = true
 
     this._ws = new Ws(...this._args)
 
     this._ws.onopen = event => {
+      debug('Connection open')
+
       if (event.target._connection && event.target._connection.socket) {
         const socket = event.target._connection.socket
         socket.setKeepAlive(true, this._options.keepAlive)
@@ -99,6 +105,8 @@ function WsReconnector (Ws, options) {
     }
 
     this._ws.onmessage = event => {
+      debug('Message received')
+
       if (this._dummyListeners.onmessage) {
         this._dummyListeners.onmessage.call(this, event)
       }
@@ -109,6 +117,8 @@ function WsReconnector (Ws, options) {
     }
 
     this._ws.onerror = event => {
+      debug(`Connection error ${event.code}`)
+
       if (event.code === 'ECONNREFUSED') {
         this._reconnect()
         return
@@ -124,6 +134,8 @@ function WsReconnector (Ws, options) {
     }
 
     this._ws.onclose = event => {
+      debug(`Connection closed ${event.code}`)
+
       this._connecting = false
       this._connected = false
 
