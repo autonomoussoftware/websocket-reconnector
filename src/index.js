@@ -161,11 +161,19 @@ function WsReconnector (Ws, options) {
     )
   }
 
+  ReconnectingWebsocket.prototype.reconnect = function () {
+    this.close()
+    this._connect()
+  }
+
   ReconnectingWebsocket.prototype.send = function (data) {
     return this._ws.send(data)
   }
 
   ReconnectingWebsocket.prototype.close = function () {
+    this._connecting = false
+    this._connected = false
+
     return this._ws.close()
   }
 

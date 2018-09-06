@@ -32,6 +32,12 @@ client.onmessage(event => console.log(`Message received: ${event.data}`))
 
 The API is fully compatible with the [W3C WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) API.
 
+In addition, the following additional method is available:
+
+#### `client.reconnect()`
+
+Closes the underlying websocket instance and initiates a new connection.
+
 ## License
 
 MIT
