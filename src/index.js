@@ -72,7 +72,7 @@ function WsReconnector (Ws, options) {
   }
 
   ReconnectingWebsocket.prototype._connect = function () {
-    if (this._connecting) {
+    if (this._connecting || this._connected) {
       return
     }
 
