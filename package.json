@@ -1,6 +1,6 @@
 {
   "name": "websocket-reconnector",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A wrapper to W3C WebSocket objects to seamlesly add reconnection feature",
   "keywords": [
     "websocket",
