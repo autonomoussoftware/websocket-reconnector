@@ -134,7 +134,7 @@ function WsReconnector (Ws, options) {
     }
 
     this._ws.onclose = event => {
-      debug(`Connection closed ${event.code}`)
+      debug(`Connection closed ${event.code} ${event.reason}`)
 
       this._connecting = false
       this._connected = false
@@ -171,9 +171,6 @@ function WsReconnector (Ws, options) {
   }
 
   ReconnectingWebsocket.prototype.close = function () {
-    this._connecting = false
-    this._connected = false
-
     return this._ws.close()
   }
 
