@@ -1,6 +1,6 @@
 # websocket-reconnector
 
-[![Build Status](https://travis-ci.com/autonomoussoftware/websocket-reconnector.svg?branch=master)](https://travis-ci.com/autonomoussoftware/websocket-reconnector)
+[![Build Status](https://travis-ci.com/autonomoussoftware/websocket-reconnector.svg?branch=master)](https://travis-ci.com/autonomoussoftware/websocket-reconnector) [![Greenkeeper badge](https://badges.greenkeeper.io/autonomoussoftware/websocket-reconnector.svg)](https://greenkeeper.io/)
 
 A wrapper to W3C WebSocket objects to seamlesly add reconnection feature.
 
